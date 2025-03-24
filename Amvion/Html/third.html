@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+</head>
+<style>
+    body{
+        height: 100vh;
+    }
+    .container{
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 2fr 0.5fr 0.5fr 1fr;
+        grid-template-rows: 1fr 20px 1fr ;
+        max-width: 800px;
+
+        margin: auto;
+        margin-top: 200px;
+    }
+    .container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+   }
+    .container img:nth-child(1){
+    grid-row: span 3;
+   }
+    .container img:nth-child(4){
+    grid-row: span 2;
+   }
+   .container img:nth-child(5){
+    grid-row: span 2 ;
+    grid-column: span 2;
+   }
+   .image{
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+   }
+   .pict{
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    left: 1100px;
+    bottom: 510px;
+    animation-name: pict;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count:10;
+   }
+   @keyframes pict{
+    from{top: 0px;}
+    to{top: 100px;}
+   }
+   .test h2{
+    position: absolute;
+   }
+   .action {
+    width: 10em;
+    height: 5ex;
+    background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
+    border: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    cursor:-webkit-zoom-in;
+    }
+
+    .action:active {
+    box-shadow: 2px 2px 5px #0f0f0f;
+    }
+
+
+
+</style>
+<body>
+    <section>
+        <div class="container">
+            <img src="img/group.jpeg" alt="students" >
+            <img src="img/class.jpeg" alt="Class">
+            <img src="img/big.jpeg" alt="Group">
+            <img src="img/fourth.jpeg" alt="fourth">
+            <img src="img/fifth.jpeg" alt="fifth">
+            <img src="img/sixth.jpeg" alt="sixth">
+        </div>
+        <div>
+            <img src="img/tig.jpeg" alt="Tigre" class="image">
+            <img src="img/tree.jpeg" alt="tree" class="pict">
+           
+        </div>
+    </section>
+    <div class="action"></div>
+
+
+    <div class="test">
+        <h1>Lorem ipsum dolor sit amet.</h1>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <h3>Lorem ipsum dolor sit amet.</h3>
+    </div>
+</body>
+</html>

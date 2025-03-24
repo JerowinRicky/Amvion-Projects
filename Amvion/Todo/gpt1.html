@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click to Change Color</title>
+    <style>
+        .trans {
+            display: flex;
+            width: 500px;
+            height: 100px;
+            margin: 100px auto;
+            background-color: yellow;
+            border: 2px solid black;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+            isolation: isolate;
+        }
+        .trans::before{
+            content: "";
+            position: absolute;
+            left: 0%;
+            top: 0;
+            width: 25%;
+            height: 100%;
+            background-color: RED;
+            z-index: -1;
+  
+            transition: 0.5s;
+        }
+        .column {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 0px solid rgb(255, 255, 255);
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+            position: relative;
+        }
+
+        .column:last-child {
+            border-right: none;
+        }
+
+        /* Hide radio buttons */
+        input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        /* Apply green background when the radio is checked */
+        .trans:has(.column:nth-child(1) [type="radio"]:checked)::before {
+            left: 0%;
+        }
+        .trans:has(.column:nth-child(2) [type="radio"]:checked)::before {
+            left: 25%;
+        }
+        .trans:has(.column:nth-child(3) [type="radio"]:checked)::before {
+            left: 50%;
+        }
+        .trans:has(.column:nth-child(4) [type="radio"]:checked)::before {
+            left:75%;
+        }
+
+        /* Styling labels to cover the entire column */
+        label {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <div class="trans">
+            <div class="column">
+                <input type="radio" name="color" id="box1">
+                <label for="box1">One</label>
+            </div>
+            <div class="column">
+                <input type="radio" name="color" id="box2">
+                <label for="box2">Two</label>
+            </div>
+            <div class="column">
+                <input type="radio" name="color" id="box3">
+                <label for="box3">Three</label>
+            </div>
+            <div class="column">
+                <input type="radio" name="color" id="box4">
+                <label for="box4">Four</label>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

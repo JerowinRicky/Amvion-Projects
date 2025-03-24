@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-com</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="images/logo.jpg" alt="Logo"></a>
+            <div class="menu-btn" id="menu-btn"></div>
+            <div class="nav-links" id="nav-links">
+                <div class="menu-btn" id=""></div>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="">ELECTRONICS</a></li>
+                    <li><a href="">GROSARY</a></li>
+                    <li><a href="">YOUR CART</a></li>
+                    <li><button class="toggle-btn">LOGIN</button></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="face-d">
+            <h1>50% DISCOUNT</h1>
+            <p>Got it! Here's a 50% Discount Advertisement Banner for your e-commerce website.</p>
+        </div>
+        <div class="discount">
+            <span class="item1">
+                <!-- <img src="images/phone.webp" alt="iphone 16e"> -->
+                <h2>@59999</h2>
+                <p>upto 50% Discount</p>
+                <button type="submit" class="toggle-btn button">Add to Cart</button>
+            </span>
+            <sapn class="item2">
+                <h2>@87999</h2>
+                <p>upto 50% Discount</p>
+                <button type="submit" class="toggle-btn button">Add to Cart</button>
+            </sapn>
+            <span class="item3">
+                <h2>@599</h2>
+                <p>upto 50% Discount</p>
+                <button type="submit" class="toggle-btn button">Add to Cart</button>
+            </span>
+        </div>
+    </section>
+    <section class="middle">
+        <div class="mid-1">
+            <h1>TOP LISTED</h1>
+            <p>"Top Listed" generally refers to items, entities, or individuals that rank among the highest in a particular category based on criteria such as popularity, quality, sales, or performance. It can apply to various fields, including business (top-listed companies), e-commerce (best-selling products), entertainment (top-rated movies), and technology (most popular apps).  </p>
+        </div>
+        <div class="items">
+        <span class="products">
+            <a href=""><img src="images/product1.webp" alt="">
+            <h2>camera</h2></a>
+            <a href=""><img src="images/product1.webp" alt=""><h2>camera</h2></a>
+            <a href=""><img src="images/product1.webp" alt=""><h2>camera</h2></a>
+        </span>
+        <span class="products">
+            <a href=""><img src="images/product1.webp" alt=""><h2>camera</h2></a>
+            <a href=""><img src="images/product1.webp" alt=""><h2>camera</h2></a>
+            <a href=""><img src="images/product1.webp" alt=""><h2>camera</h2></a>
+        </span>
+        </div>
+    </section>
+</body>
+</html>
+<script>
+    const menubtn = document.querySelector(".menu-btn");
+    const navlinks = document.getElementById("nav-links")
+    menubtn.addEventListener("click",()=>{
+        navlinks.classList.toggle("show");
+        menubtn.classList.toggle("close");
+    })
+</script>

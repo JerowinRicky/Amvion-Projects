@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>submit</title>
+    <style>
+        .submit{
+            display: grid;
+            grid-template-columns: 1fr 1fr  ;
+            grid-template-rows: 1fr 1fr 1fr ;
+            justify-self: center;
+            gap: 10px;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>The Data</h1>
+        <div class="submit">
+            <p><strong>Name :</strong> </p>
+            <span id="displayname"></span>
+            <p><strong>Email :</strong> </p>
+            <span id="displaymail"></span>
+            <p><strong>Phone :</strong> </p>
+            <span id="displayphone"></span>
+        </div>
+    </section>
+    <script>
+        document.getElementById("displayname").textContent=localStorage.getItem("name");
+        document.getElementById("displaymail").textContent=localStorage.getItem("mail");
+        document.getElementById("displayphone").textContent=localStorage.getItem("phone");
+    </script>
+</body>
+</html>

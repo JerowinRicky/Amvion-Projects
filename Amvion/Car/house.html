@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data</title>
+    <style>
+        .data,.input{
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            justify-self: center;
+            gap: 20px;
+        }
+        .button{
+            padding: 10px;
+            margin-top: 30px;
+        }
+        .data{
+            border: 2px solid black;
+            padding: 50px;
+        }
+        .data input:hover{
+            /* color: red; */
+            background-color: burlywood;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="data">
+            <form action="Biodata" class="input"  id="forms">
+                <label for="Name">Name:</label>
+                <input type="text" required id="name">
+                <label for="Mobile">Mobile no:</label>
+                <input type="tel" required id="mobile">
+                <label for="email">Email:</label>
+                <input type="email" required id="email">
+                <button type="submit" class="button">Save</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
+
+
+<script>
+    document.getElementById("forms").addEventListener("submit",function(event){
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const mobile = document.getElementById("mobile").value;
+        const email = document.getElementById("email").value;
+
+        localStorage.setItem("name",name);
+        localStorage.setItem("mobile",mobile);
+        localStorage.setItem("email",email);
+        window.location.href="display.html";
+    });
+</script>

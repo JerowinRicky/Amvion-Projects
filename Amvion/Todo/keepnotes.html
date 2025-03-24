@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <style>
+        .input{
+            text-align: center;
+        }
+        .input button:hover{
+            border-radius: 10%;
+            background-color: rgb(250, 59, 59);
+            border: 0;
+        }
+        .input button{
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+            right: 140px;
+            top: 40px;
+        }
+        .input textarea{
+            height: 100px;
+            width: 200px;
+        }
+        .input textarea:hover{
+            border: 0;
+            background-color: rgba(0, 255, 255, 0.548);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="input">
+            <h1>Keep Notes</h1>
+            <form action="" id="form">
+                <label for="Notes"></label>
+                <textarea name="notes" id="notes" placeholder="Your Notes" required></textarea>
+                <button type="submit" class="button">Save</button>
+            </form>
+        </div>
+    </section>
+    <section id="saves">
+        <h1>Your Notes</h1>
+    </section>
+</body>
+</html>
+
+<!-- <script>
+    document.querySelector("#form").addEventListener("submit",(e)=>{
+        e.preventDefault();
+        const notes = document.getElementById("notes").value;
+        const saves = document.getElementById("saves");
+        const div = document.createElement("div");
+        const deletes = document.createElement("button");
+        deletes.classList.add("deleteBtn");
+        deletes.innerHTML="delete";
+        div.setAttribute("style","color:red;background-color:yellow;padding:10px;");
+
+        deletes.addEventListener("click",()=>{
+            div.remove();
+        });
+        div.textContent=notes;
+        div.appendChild(deletes);
+        saves.appendChild(div);
+        document.getElementById("notes").value="";
+    });
+</script> -->
+
+<!-- <script>
+    let db;
+
+    // Open IndexedDB
+    const request = indexedDB.open("NotesDB", 1);
+
+    request.onupgradeneeded = function(event) {
+        db = event.target.result;
+        if (!db.objectStoreNames.contains("notes")) {
+            db.createObjectStore("notes", { keyPath: "id", autoIncrement: true });
+        }
+    };
+
+    request.onsuccess = function(event) {
+        db = event.target.result;
+        loadNotes(); // Load existing notes
+    };
+
+    request.onerror = function(event) {
+        console.error("IndexedDB Error:", event.target.error);
+    };
+
+    // Form submission event
+    document.querySelector("#form").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const noteText = document.getElementById("notes").value.trim();
+        if (!noteText) return; // Avoid empty notes
+
+        const transaction = db.transaction(["notes"], "readwrite");
+        const store = transaction.objectStore("notes");
+        store.add({ text: noteText });
+
+        transaction.oncomplete = () => {
+            document.getElementById("notes").value = ""; // Clear textarea
+            loadNotes(); // Reload notes
+        };
+    });
+
+    // Load notes from IndexedDB
+    function loadNotes() {
+        const saves = document.getElementById("saves");
+        saves.innerHTML = "<h1>Your Notes</h1>"; // Clear existing notes
+
+        const transaction = db.transaction(["notes"], "readonly");
+        const store = transaction.objectStore("notes");
+        const request = store.getAll();
+
+        request.onsuccess = function() {
+            request.result.forEach(note => {
+                const div = document.createElement("div");
+                const deleteBtn = document.createElement("button");
+
+                div.textContent = note.text;
+                div.setAttribute("style", "color: red; background-color: yellow; padding: 10px; margin: 5px;");
+                deleteBtn.textContent = "Delete";
+                deleteBtn.classList.add("deleteBtn");
+
+                deleteBtn.addEventListener("click", () => deleteNote(note.id));
+
+                div.appendChild(deleteBtn);
+                saves.appendChild(div);
+            });
+        };
+    }
+
+    // Delete note from IndexedDB
+    function deleteNote(id) {
+        const transaction = db.transaction(["notes"], "readwrite");
+        const store = transaction.objectStore("notes");
+        store.delete(id);
+
+        transaction.oncomplete = () => loadNotes(); // Reload notes after deletion
+    }
+</script> -->
+
+
+<script>
+    const CACHE_NAME = "notes-cache";
+
+    // Save a note to Cache API
+    async function saveNoteToCache(note) {
+        const cache = await caches.open(CACHE_NAME);
+        let notes = await loadNotesFromCache();
+        notes.push(note);
+
+        await cache.put("/notes", new Response(JSON.stringify(notes)));
+        loadNotes(); // Refresh notes display
+    }
+
+    // Load notes from Cache API
+    async function loadNotesFromCache() {
+        const cache = await caches.open(CACHE_NAME);
+        const response = await cache.match("/notes");
+        if (response) {
+            return await response.json();
+        }
+        return []; // Return empty array if no notes exist
+    }
+
+    // Load and display notes
+    async function loadNotes() {
+        const saves = document.getElementById("saves");
+        saves.innerHTML = "<h1>Your Notes</h1>"; // Clear previous notes
+
+        const notes = await loadNotesFromCache();
+        notes.forEach((note, index) => {
+            const div = document.createElement("div");
+            const deleteBtn = document.createElement("button");
+
+            div.textContent = note;
+            div.setAttribute("style", "color: red; background-color: yellow; padding: 10px; margin: 5px;");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.classList.add("deleteBtn");
+
+            deleteBtn.addEventListener("click", () => deleteNoteFromCache(index));
+
+            div.appendChild(deleteBtn);
+            saves.appendChild(div);
+        });
+    }
+
+    // Delete a note from Cache API
+    async function deleteNoteFromCache(index) {
+        let notes = await loadNotesFromCache();
+        notes.splice(index, 1); // Remove the selected note
+
+        const cache = await caches.open(CACHE_NAME);
+        await cache.put("/notes", new Response(JSON.stringify(notes)));
+
+        loadNotes(); // Refresh display
+    }
+
+    // Handle form submission
+    document.querySelector("#form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const noteText = document.getElementById("notes").value.trim();
+        if (!noteText) return; // Prevent empty notes
+
+        await saveNoteToCache(noteText);
+        document.getElementById("notes").value = ""; // Clear textarea
+    });
+
+    // Load notes when page loads
+    loadNotes();
+</script>

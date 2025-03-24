@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-com</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="images/logo.jpg" alt="Logo"></a>
+            <div class="menu-btn" id="menu-btn"></div>
+            <div class="nav-links" id="nav-links">
+                <ul>
+                    <li><a href="chatgpt.html">HOME</a></li>
+                    <li><a href="">ELECTRONICS</a></li>
+                    <li><a href="">GROCERY</a></li>
+                    <li><a href="cart.html">YOUR CART</a></li> <!-- Updated Link -->
+                    <li><button class="toggle-btn">LOGIN</button></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="face-d">
+            <h1>50% DISCOUNT</h1>
+            <p>Exclusive discounts on the latest gadgets and fashion.</p>
+        </div>
+
+        <div class="discount">
+            <div class="item" data-name="iPhone 16" data-price="59999" data-img="images/phone.webp">
+                <h2>@59999</h2>
+                <p>Upto 50% Discount</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="item" data-name="PS5" data-price="87999" data-img="images/ps5.webp">
+                <h2>@87999</h2>
+                <p>Upto 50% Discount</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="item" data-name="Nike Shoes" data-price="599" data-img="images/shoes.webp">
+                <h2>@599</h2>
+                <p>Upto 50% Discount</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartButtons = document.querySelectorAll(".add-to-cart");
+
+            cartButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const item = this.parentElement;
+                    const product = {
+                        name: item.getAttribute("data-name"),
+                        price: item.getAttribute("data-price"),
+                        img: item.getAttribute("data-img")
+                    };
+
+                    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    cart.push(product);
+                    localStorage.setItem("cart", JSON.stringify(cart));
+
+                    alert(`${product.name} added to cart!`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+    }
+
+    /* Header Section */
+    .header {
+        height: 100vh;
+        width: 100%;
+        background-image: url(images/header.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Navigation Bar */
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        padding: 15px 30px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    nav img {
+        width: 150px;
+    }
+
+    .nav-links ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .nav-links ul li {
+        display: inline-block;
+        padding: 10px 20px;
+    }
+
+    .nav-links ul li a {
+        text-decoration: none;
+        font-size: 15px;
+        color: rgb(0, 0, 0);
+        transition: color 0.3s ease-in-out;
+    }
+
+    .nav-links ul li a:hover {
+        color: red;
+    }
+
+    /* Discount Section */
+    .discount {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 50px;
+    }
+
+    .item {
+        width: 30%;
+        height: 300px;
+        background-color: yellow;
+        border-radius: 20px;
+        text-align: center;
+        padding-top: 20px;
+        animation: slideUp 1.5s ease-in-out;
+    }
+
+    /* Background images for products */
+    .item1 {
+        background-image: url("/images/phone.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .item2 {
+        background-image: url("images/phone.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .item3 {
+        background-image: url("./images/shoes.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 15px;
+        font-size: 16px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .button:hover {
+        transform: scale(1.1);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .nav-links ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .discount {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .item {
+            width: 80%;
+            height: 250px;
+        }
+    }
+
+</style>
+
+

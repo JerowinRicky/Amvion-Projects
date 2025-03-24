@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try</title>
+    <style>
+        body{
+            margin: 0;
+            height: 1000px;
+        }
+        .header{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(243, 107, 107, 0.238),rgba(243, 183, 73, 0.204)),url(image/car.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            position: relative;            
+        }
+        .nav{
+            display: flex;
+            padding: 2% 6%;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .first{
+            flex: 1;
+            text-align: right;
+        }
+        .first ul li{
+            list-style: none;
+            display: inline-block;
+            padding: 20px;
+            color: aliceblue;
+            position: relative;
+            text-decoration: none;
+        }
+        .first ul li a{
+            color: #fff;
+            text-decoration: none;
+        }
+        .first ul li::after{
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: #d8813b;
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+        .first ul li:hover:after{
+            width: 100%;
+        }
+        .button{
+            display: none;
+        }
+        @media (max-width:700px) {
+            .first{
+                flex-direction: column;
+                display: block;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 200px;
+                height: 100vh;
+                background-color: #d8813b;
+                text-align: left;
+                padding-top: 60px;
+                transform: translateX(100%);
+                transition: 0.5s;
+            }
+            .first.show{
+                transform: translateX(0%);
+            }
+        .button{
+            display: block;
+            position: relative;
+            top: 50px;
+            right: 0px;
+            width: 30px;
+            height: 20px;
+            background-image: url(https://api.iconify.design/ic:outline-menu.svg?color=white);
+            z-index: 2;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+
+        <nav class="nav" id="nav">
+            <a href="try.html">LOGO</a>
+            <div class="first">
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="">ABOUT</a></li>
+                    <li><a href="">COURSE</a></li>
+                    <li><a href="">BLOG</a></li>
+                    <li><a href="">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="button" ></div>
+        </nav>
+    </section>
+</body>
+</html>
+<script>
+    let nav = document.querySelector(".first");
+    let button = document.querySelector(".button");
+    
+    button.addEventListener("click",()=>{
+        nav.classList.toggle("show");
+    });
+</script>

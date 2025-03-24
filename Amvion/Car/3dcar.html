@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Car with Rotation</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #87CEEB, #ffffff);
+        }
+        .scene {
+            width: 200px;
+            height: 100px;
+            perspective: 800px;
+        }
+        .car {
+            width: 200px;
+            height: 100px;
+            transform-style: preserve-3d;
+            transform: rotateX(10deg) rotateY(0deg);
+            transition: transform 0.1s linear;
+        }
+        .part {
+            position: absolute;
+            background: red;
+            border: 1px solid black;
+            opacity: 0.9;
+        }
+        .body {
+            width: 200px;
+            height: 100px;
+            transform: translateZ(50px);
+        }
+        .roof {
+            width: 120px;
+            height: 50px;
+            transform: translate(40px, -30px) translateZ(75px);
+            background: darkred;
+        }
+        .wheel {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: black;
+            position: absolute;
+        }
+        .wheel1 { transform: translate(20px, 90px) translateZ(40px); }
+        .wheel2 { transform: translate(140px, 90px) translateZ(40px); }
+        .wheel3 { transform: translate(20px, 90px) translateZ(-40px); }
+        .wheel4 { transform: translate(140px, 90px) translateZ(-40px); }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="car" id="car">
+            <div class="part body"></div>
+            <div class="part roof"></div>
+            <div class="part wheel wheel1"></div>
+            <div class="part wheel wheel2"></div>
+            <div class="part wheel wheel3"></div>
+            <div class="part wheel wheel4"></div>
+        </div>
+    </div>
+    <script>
+        let car = document.getElementById("car");
+        let isDragging = false;
+        let lastX = 0;
+        let rotationY = 0;
+
+        document.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            lastX = e.clientX;
+        });
+
+        document.addEventListener("mousemove", (e) => {
+            if (!isDragging) return;
+            let deltaX = e.clientX - lastX;
+            rotationY += deltaX * 0.5;
+            car.style.transform = `rotateX(10deg) rotateY(${rotationY}deg)`;
+            lastX = e.clientX;
+        });
+
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+    </script>
+</body>
+</html>

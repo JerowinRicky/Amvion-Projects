@@ -1,0 +1,154 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <P>
+            <label for="name">Name</label>
+            <input type="text" name="name" autocomplete="on" id="Name" placeholder="Rajesh"  required>
+        </P>
+        <p>
+            <label for="password">Password</label>
+            <input type="password" name="name" id="pass" placeholder="abc@123" required>
+        </p>
+        <p>
+            <label for="phone">Phone</label>
+            <input type="tel" name="name" id="phone" required pattern="[0-9]{3}[0-9]{3}[0-9]{4}">
+        </p>
+    </section>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Input Types</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 600px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input, select, textarea {
+            margin-top: 5px;
+            padding: 8px;
+            width: 100%;
+            max-width: 100%;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>HTML Input Types Example</h2>
+
+    <form id="inputForm">
+        <!-- Text Input -->
+        <label for="text">Text Input:</label>
+        <input type="text" id="text" name="text" placeholder="Enter your name">
+
+        <!-- Password Input -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password">
+
+        <!-- Email Input -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="example@mail.com">
+
+        <!-- Number Input -->
+        <label for="number">Number:</label>
+        <input type="number" id="number" name="number" placeholder="Enter a number">
+
+        <!-- Date Input -->
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+
+        <!-- Time Input -->
+        <!-- <label for="time">Time:</label>
+        <input type="time" id="time" name="time" > -->
+
+        <!-- Color Picker -->
+        <label for="color">Pick a Color:</label>
+        <input type="color" id="color" name="color">
+
+        <!-- Radio Buttons -->
+        <h1>Gender:</h1>
+        <label for="female">Female</label>
+        <input type="radio" id="female" name="gender" value="feMale">
+        <label for="male">Male</label>
+        <input type="radio" id="male" name="gender" value="male">
+        
+
+        <!-- Checkbox -->
+        <h1>Hobbies:</h1>
+        <label for="reading">Reading</label>
+        <input type="checkbox" id="reading" name="hobby" value="Reading">
+        <label for="sports">Sports</label>
+        <input type="checkbox" id="sports" name="hobby" value="Sports">
+        <label for="music">Music</label>
+        <input type="checkbox" id="music" name="hobby" value="Music">
+
+        <!-- Dropdown (Select) -->
+        <label for="country">Select Country:</label>
+        <select id="country" name="country">
+            <option value="usa">USA</option>
+            <option value="uk">UK</option>
+            <option value="india">India</option>
+            <option value="canada">Canada</option>
+        </select>
+
+        <!-- File Upload -->
+        <label for="file">Upload a File:</label>
+        <input type="file" id="file" name="file">
+
+        <!-- Textarea -->
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Enter your message"></textarea>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+
+    <h3>Form Data:</h3>
+    <div id="output"></div>
+
+    <script>
+        document.getElementById("inputForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent actual form submission
+            
+            let formData = new FormData(this);
+            let output = "<ul>";
+
+            for (let [key, value] of formData.entries()) {
+                output += `<li><strong>${key}:</strong> ${value}</li>`;
+            }
+
+            output += "</ul>";
+            document.getElementById("output").innerHTML = output;
+        });
+    </script>
+
+</body>
+</html>

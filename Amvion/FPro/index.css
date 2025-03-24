@@ -1,0 +1,448 @@
+:root{
+--color-1:orangered;
+}
+body{
+    margin: 0px;
+    font-family: "Poppins", serif;
+}
+p{
+    max-width: 80ch;
+    text-wrap: balance;
+}
+.top{
+    display: flex;
+    gap: 50px;
+    align-items:center;
+    font-size: large;
+}
+.text-center{
+    text-align: center;
+}
+.logo{
+     width: 100px;
+    height: auto; 
+    align-items: start;
+    margin-right: 150px;
+    margin-left: 100px;
+}
+.login{
+    width: 80px;
+    height: 50px;
+    border-color:orangered;
+    background-color: orangered;
+    border-radius: 10%;
+    margin-left: 150px;
+    cursor: pointer;
+}
+.home{
+    font-family: Arial, Helvetica, sans-serif;
+    /* width: 100px; */
+    cursor: pointer;
+}
+.body{
+    height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* background-color: aqua; */
+    margin: 100px;
+}
+.em{
+    font-size: 3em;
+    color: rgb(85, 84, 84);
+}
+.but{
+    height:50px ;
+    background-color: orangered;
+    border-color: orangered;
+    cursor: pointer;
+    border-radius: 10px;
+}
+#choose{
+    width: 260px;
+    height: 50px;
+}
+.boy{
+    width: 500px;
+    height: 400px;
+} 
+.third{
+    background-color:rgb(248, 248, 101);
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 200px;
+    right: 100px;
+    border-radius: 10px;
+    padding: 20px;
+}
+.q{
+    margin: 0px;
+}
+.fourth{
+    background-color:rgb(248,248,101);
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 500px;
+    right: 600px;
+    border-radius: 10px;
+    padding: 20px;
+}
+/*------------------------------------------------------------------------------------*/
+.how{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.how1{
+    font-size: 3em;
+    color: rgb(85, 84, 84);
+    margin: opx;
+}
+.how2{
+    font-size: 1.5em;
+    margin: 0px;
+}
+.pic3{
+    width: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 0.5fr 0.5fr;  
+    column-gap: 30px;    
+    text-align: center;
+    margin: 50px;
+}
+.immg{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    justify-self: center;
+}
+.p{
+    font-size:xx-large;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+.thi2{
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* margin: 100px; */
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.sh1{
+    width: 100px;
+    height: 130px;
+}
+.a12{
+    font-size: 3em;
+    color: rgb(36, 35, 35);
+    margin: opx;
+}
+.thi4,.thi5,.thi6{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 20px;
+}
+.c12{
+    font-size: xx-large;
+    font: bold;
+}
+.b11{
+    width: 100px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    color: orange;
+    border-color: orange;
+}
+.thi5{
+    margin-left: 100px;
+    margin-right: 50px;
+}
+.b15{
+    width: 150px;
+    height: 60px;
+    border-radius: 30px;
+    cursor: pointer;
+    color: orange;
+    border-color: orange;
+    margin-left: 45%;
+    /* margin-right: 50%; */
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+.d11{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 100px;
+    margin-right: 100px;
+    align-content: center;
+    margin-top: 100px;
+}
+.w11{
+    height:350px ;
+    width: auto;
+    border-radius: 60px;
+}
+.d13{
+    align-items: center;
+}
+.w12{
+    position: relative;
+    bottom: 320px;
+    left: 350px;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    /* border: 10px; */
+}
+.w13{
+    height: 50px;
+    border: 0px;
+    cursor: pointer;
+}
+.f11{
+    font-size: 3em;
+    color: rgb(36, 35, 35);
+    /* margin: 0px; */
+}
+.z11{
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+    cursor: pointer;
+    border-color: orange;
+    background-color: orange;
+    /* margin-right: 50%; */
+}
+.z12{
+    margin-bottom: 10px;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+.v11{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 100px;
+    /* background-color: aqua; */
+    /* margin: 0px; */
+    margin-left: 50px;
+    margin-right: 50px;
+    gap: 2rem;
+}
+.v12{
+    font-size: 2em;
+    color: gold;
+}
+.v13{
+    font-size: xx-large;
+    font: bold;
+}
+.counter{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 30px;
+    background-color: whitesmoke;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+.counter .number{
+    color: var(--color-1);
+    font-size: 40px;
+}
+.custom-button{
+    background-color: var(--color-1);
+    padding: 1rem 2rem;
+    border-radius: 100vw;
+    border: 3px solid var(--color-1);
+    transition: 0.3s;
+}
+.custom-button:hover{ 
+    background-color: hsl(39, 100%, 50%);
+    border: 3px solid hsl(39, 100%, 50%);
+    color: white;
+}
+/*-------------------------------------------------------------------------------------------------*/
+.feedback{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 50px;
+    padding: 1rem;
+    margin-top: 100px;
+}
+.feed{
+    width: 500px;
+    border-radius: 3rem;
+    margin-left: 30px;
+}
+.cusfeed{
+    font-size: 3em;
+    color: rgb(36, 35, 35);
+}
+.feedspan{
+    margin-right: 50px;
+    font-size: 20px;
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+.team{
+    height: 650px;
+    width: 100%;
+    background-color: rgb(39, 39, 39);
+    margin-top: 100px;
+}
+.grey{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.join{
+    font-size: 3.5rem;
+    color: white;
+    padding: 50px;
+    margin-top: 50px;
+}
+.parttype{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 0px;
+}
+.courier{
+    width: 500px;
+    height: 300px;
+    border-radius: 50px;
+    border: 5px ridge yellow;
+}
+.inimg,.inbut{
+    position: relative;
+    bottom: 160px;
+    left: 50px;
+}
+.inimg{
+    font-size: xx-large;
+    font-weight:bolder;
+    color: rgb(255, 102, 0);
+    
+}
+.inbut{
+    background-color: var(--color-1);
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    cursor: pointer;
+}
+/*------------------------------------------------------------------------------------------------------------*/
+.newsti{
+    font-size: 3em;
+    margin-top: 80px;
+    margin-left: 150px;
+    /* padding: 50px; */
+}
+.newsgrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 150px;
+    margin-top: 0px;
+    bottom: 2px solid rgb(224, 224, 224) ;
+    /* background-color: whitesmoke; */
+    /* margin:30px; */
+}
+.groupnews{
+    height: 300px;
+    width: 500px;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+.grouph{
+    font-size: 2.5em;
+}
+.groupbut{
+    padding: 2em 2em 2em 0em;
+    border-radius: 20px;
+    border-color: white;
+    background-color: white;
+    border: 0px;
+    cursor: pointer;
+    font-size: 1em;
+    color: orangered;
+}
+.wordgray{
+    color: gray;
+}
+.foodgrid{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr ;
+    gap: 10px;
+    row-gap: 30px;
+}
+.foodpic{
+    height:200px;
+    border-radius: 10px;
+}
+.butgrid{
+    /* height: 40px; */
+    background-color: rgb(255, 174, 0);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+}
+/*--------------------------------------------------------------------------------------------------*/
+.subscribe{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px;
+}
+.subpic{
+    width: 300px;
+    justify-self: center;
+}
+.menudi{
+    justify-self: center;
+}
+.getmenu{
+    font-size: 3em;
+}
+.mail{
+    padding: 1rem 2rem;
+    border: 0px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+.mailbut{
+    padding: 1em 2em;
+    border-radius: 10px;
+    border: 0px;
+    background-color: var(--color-1);
+    cursor: pointer;
+}
+/*------------------------------------------------------------------------------------------------------------*/
+.areagray{
+    background-color: gray;
+    height: 600px;
+}
+.greyarea{
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 2fr;
+    justify-items: center;
+    padding: 80px;
+    padding-bottom: 0px;
+}
+.menufoot{
+    font-size: 2em;
+    color: rgb(73, 73, 73);
+}
+.em1{
+    font-size: 3em;
+}
+.home2{
+    font-size: 20px;
+}
+.copy{
+    padding-left: 80px;
+}

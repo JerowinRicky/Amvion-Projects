@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .products{
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+        .material{
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+            text-align: center;
+            padding: 40px;
+        }
+        .addBut{
+            width: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <section>
+            <div class="products">
+                <div class="material">
+                    <h1>Item 1</h1>
+                    <button type="button" class="addBut">Add to Cart</button>
+                </div>
+                <div class="material">
+                    <h1>Item 2</h1>
+                    <button type="button" class="addBut">Add to Cart</button>
+                </div>
+                <div class="material">
+                    <h1>Item 3</h1>
+                    <button type="button" class="addBut">Add to Cart</button>
+                </div>
+                <div class="material">
+                    <h1>Item 4</h1>
+                    <button type="button" class="addBut">Add to Cart</button>
+                </div>
+                <div class="material">
+                    <h1>Item 5</h1>
+                    <button type="button" class="addBut">Add to Cart</button>
+                </div>
+                <div class="material">
+                    <h1>Item 6</h1>
+                    <button type="button" class="addBut">Add to Cart</button>
+                </div>
+                <div class="material">
+                    <h1>Item 7</h1>
+                    <button type="button" class="addBut">Add to Cart</button>
+                </div>
+                <div class="material">
+                    <h1>Item 8</h1>
+                    <button type="button" class="addBut">Add to Cart</button>
+                </div>
+                <div class="material">
+                    <h1>Item 9</h1>
+                    <button type="button" class="addBut">Add to Cart</button>
+                </div>
+                <div class="material">
+                    <h1>Item 10</h1>
+                    <button type="button" class="addBut">Add to Cart</button>
+                </div>    
+            </div>
+            <div class="cart">
+                <h1>Your cart</h1>
+            </div>
+    </section>
+</body>
+</html>
+
+<script>
+    const material = document.querySelector(".material");
+    const  cart= document.querySelector(".cart");
+    const addBut = document.querySelector(".addBut");
+    const div = document.createElement("div");
+    div.classList.add("itemsL");
+    addBut.addEventListener("click",()=>{
+        material.textContent = cart;
+        div.appendChild(material);
+    })
+
+
+</script>

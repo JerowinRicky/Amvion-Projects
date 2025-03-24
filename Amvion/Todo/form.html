@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            height: 100px;
+            justify-self: center;
+            /* align-items: center; */
+            gap: 20px;
+        }
+        .button{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+   <section>
+    <div>
+        <form action="submit" class="form" id="form1">
+            <label for="Name">Name :</label>
+            <input type="text" class="Name"  id="name" required placeholder="Name">
+            <label for="email">Mail :</label>
+            <input type="email" class="mail"required id="mail" placeholder="abc@de.com">
+            <label for="phone" class="phone">Phone no:</label>
+            <input type="tel" class="phone" id="phone" placeholder="*** *** ****"><br>
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
+   </section> 
+   <script>
+    document.getElementById("form1").addEventListener("submit",function(event){
+        event.preventDefault();
+        let name = document.getElementById("name").value;
+        let mail = document.getElementById("mail").value;
+        let phone = document.getElementById("phone").value;
+        localStorage.setItem("name",name);
+        localStorage.setItem("mail",mail);
+        localStorage.setItem("phone",phone);
+        window.location.href="submit.html";
+    });
+   </script>
+</body>
+</html>

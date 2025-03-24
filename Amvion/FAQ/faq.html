@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <style>
+        .ques{
+            text-align: center;
+            width: 50%;
+            justify-self: center;
+        }
+        .ques h2{
+            border: 2px solid black;
+            padding: 20px;
+        }
+        .ques p{
+            border: 2px solid black;
+            padding: 20px;
+            /* transform: translateX(100%); */
+        }
+        .ques button{
+            position: relative;
+            top: 80px;
+            left: 300px;
+            background-image: url(https://api.iconify.design/ic:twotone-keyboard-double-arrow-down.svg?color=yellow);
+            width: 30px;
+            height: 30px;
+            border: 0;
+            cursor: pointer;
+            background-color: transparent;
+            background-size: contain;
+        }
+        .ques button img{
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="ques">
+            <span>
+                <button type="submit" class="toggle-btn"></button>
+                <h2> What is web development?</h2>
+                <p>Web development is the process of building and maintaining websites or web applications. It includes frontend (UI/UX), backend (server-side logic), and databases.</p>
+            </span>
+            <span>
+                <button type="submit" class="toggle-btn"></button>
+                <h2>What are frontend and backend development?</h2>
+                <p>Frontend: The part of the website users see (HTML, CSS, JavaScript).Backend: The part that runs on the server (Node.js, PHP, Python, databases).</p>
+            </span>
+            <span>
+                <button type="submit" class="toggle-btn"></button>
+                <h2>Most commonly used programming languages in web development?</h2>
+                <p>Frontend: HTML, CSS, JavaScript.Backend: JavaScript (Node.js), Python, PHP, Ruby, Java.Databases: MySQL, PostgreSQL, MongoDB</p>
+            </span>
+        </div>
+    </section>
+</body>
+</html>
+
+
+<script>
+    const buttons = document.querySelectorAll(".toggle-btn");
+    const answers = document.querySelectorAll(".ques p");
+
+    buttons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+            // Hide all answers except the clicked one
+            answers.forEach((answer, i) => {
+                if (i === index) {
+                    answer.style.display = answer.style.display === "block" ? "none" : "block";
+                } else {
+                    answer.style.display = "none";
+                }
+            });
+        });
+    });
+</script>

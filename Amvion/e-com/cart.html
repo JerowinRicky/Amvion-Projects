@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="images/logo.jpg" alt="Logo"></a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="chatgpt.html">HOME</a></li>
+                    <li><a href="">ELECTRONICS</a></li>
+                    <li><a href="">GROCERY</a></li>
+                    <li><a href="cart.html">YOUR CART</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="cart-container">
+            <h1>Your Cart</h1>
+            <div id="cart-items"></div>
+            <button id="clear-cart">Clear Cart</button>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartItems = document.getElementById("cart-items");
+            const clearCartButton = document.getElementById("clear-cart");
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = "<p>Your cart is empty.</p>";
+            } else {
+                cart.forEach((item, index) => {
+                    let div = document.createElement("div");
+                    div.classList.add("cart-item");
+                    div.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}" width="100">
+                        <h2>${item.name}</h2>
+                        <p>Price: ₹${item.price}</p>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    `;
+                    cartItems.appendChild(div);
+                });
+            }
+
+            clearCartButton.addEventListener("click", function () {
+                localStorage.removeItem("cart");
+                location.reload();
+            });
+        });
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            location.reload();
+        }
+    </script>
+</body>
+</html>

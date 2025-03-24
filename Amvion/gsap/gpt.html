@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Animation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+    <div id="box" style="width:100px; height:100px; background:red; position:absolute; top:50px;"></div>
+
+    <script>
+        gsap.to("#box", { x: 300, duration: 2, rotation: 180, scale: 1 });
+    </script>
+
+</body>
+</html>

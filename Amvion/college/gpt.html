@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Nav</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body {
+            background: #f4f4f4;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+        }
+        .close-btn {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+        @media (max-width: 700px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 200px;
+                height: 100vh;
+                background: #222;
+                padding-top: 60px;
+                text-align: center;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 20px 0;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .close-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>College</h1>
+        <button class="menu-btn" onclick="openMenu()">☰</button>
+        <ul class="nav-links" id="navMenu">
+            <button class="close-btn" onclick="closeMenu()">✖</button>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">COURSES</a></li>
+            <li><a href="#">BLOG</a></li>
+            <li><a href="#">CONTACT</a></li>
+        </ul>
+    </div>
+    <script>
+        function openMenu() {
+            document.getElementById("navMenu").classList.add("show");
+        }
+        function closeMenu() {
+            document.getElementById("navMenu").classList.remove("show");
+        }
+    </script>
+</body>
+</html>

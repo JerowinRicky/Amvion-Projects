@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>About Us</title>
+</head>
+<body>
+    <section class="headers">
+        <nav>
+            <a href="index.html"><img src="image/logo.png" alt="Logo"></a>
+            <div class="nav-links" id="nav-links">
+                <!-- <button id="menu-btn" class="menu-btn" onclick="openMenu()">☰</button> -->
+                <ul>
+                    <!-- <button class="close-btn" onclick="closeMenu()">✖</button> -->
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="course.html">COURSE</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="toggle-btn"></div>
+        </nav>
+        <div class="text-box">
+            <h1>About Us</h1>
+        </div>
+    </section>
+    <section class="largest-uni">
+        <div>
+            <h1>We are the world's largest university</h1>
+            <p>The first version of Anna University was formed in 1978 and various governments changed the varsity's structure and affiliation scope repeatedly. In 2001, under the Anna University Amendment Act of 2001, the erstwhile Anna University became an affiliating university, taking under its wings all the engineering colleges in Tamil Nadu.</p>
+            <a href="" class="hero-button">EXPLORE NOW</a>
+        </div>
+        <div>
+            <img src="image/about.jpg" alt="University">
+        </div>
+    </section>
+    <section>
+        <div class="footer">
+            <h3>About Us</h3>
+            <p>The College was established by EASA Foundations, Coimbatore, a public charitable.</p>
+        </div>
+    </section>
+</body>
+</html>
+
+
+<script>
+    const toggleBtn = document.querySelector(".toggle-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+        toggleBtn.classList.toggle("close");
+    });
+    
+</script>

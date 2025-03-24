@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "SEO Audit Tool",
+    "version": "1.0",
+    "description": "Perform a quick SEO audit for any webpage.",
+    "permissions": ["tabs", "storage", "activeTab"],
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  
+  
+
+  

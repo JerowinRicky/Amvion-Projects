@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="todo.js" defer></script>
+    <title>Todo</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+        .button{
+            padding: 10px;
+            cursor: pointer;
+        }
+        .heading{
+            text-align: center;
+            font-size: 3em;
+        }
+        #notes{
+            width: 300px;
+            height: 100px;
+        }
+        .deleteBtn{
+            padding: 5px;
+            cursor: pointer;
+            background-color: red;
+            color: white;
+        }
+        .nextstep{
+            padding: 100px;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+    </style>
+    
+</head>
+<body>
+    <section>
+        <h1 class="heading">To Do List</h1>
+        <div class="container">
+            <div class="top">
+                <h3>Write a note!</h3>
+                <form  id="form">
+                    <label for="note"></label>
+                    <textarea required name="notes" id="notes"></textarea><br>
+                    <button type="submit" class="button">Add</button>
+                </form>
+            </div>
+            <div class="history">
+                <h1>Yours List</h1>
+                <!-- <button class="delete">Delete</button> -->
+            </div>
+        </div>
+    </section>
+    <section class="nextstep">
+        <div class="input">
+            <form class="sample">
+                <label for="note">Write a note!</label>
+                <textarea required name="newnotes" id="notesnew"></textarea><br>
+                <button type="submit" class="newbutton">List</button>
+            </form>
+        </div>
+        <div class="save">
+            <h1>Your List</h1>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector("#form").addEventListener("submit", (e) => {              
+            e.preventDefault();
+            const notes = document.querySelector("#notes").value;
+            const history = document.querySelector(".history");
+            const div = document.createElement("div");
+            const removeBTN = document.createElement("button");
+            removeBTN.classList.add("deleteBtn");
+            removeBTN.innerHTML = "Delete";
+
+            removeBTN.addEventListener("click", () => {
+                div.remove();
+            });
+            div.innerHTML = notes;
+            div.appendChild(removeBTN);
+            history.appendChild(div);
+            document.querySelector("#notes").value = "";
+        });
+
+
+        document.querySelector(".sample").addEventListener("submit" ,(e) =>{
+            // alert("hello");
+            e.preventDefault();
+            const newStory = document.querySelector("#notesnew").value;
+            const save = document.querySelector(".save");
+            const div = document.createElement("div");
+            const buttenNew = document.createElement("button");
+            buttenNew.classList.add("deleteBtn");                                   //class
+            buttenNew.innerHTML = "Remove";
+            buttenNew.addEventListener("click",()=>{
+                div.remove();
+            });
+            div.innerHTML = newStory;
+            div.append(buttenNew);
+            save.append(div);
+            document.querySelector("#notesnew").value = "";
+        });
+    </script>
+</body>
+</html>

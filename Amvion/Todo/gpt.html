@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        /* Layout */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        /* Products Section */
+        .products {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 60%;
+        }
+
+        .material {
+            width: 200px;
+            background-color: yellow;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid black;
+        }
+
+        .addBut {
+            width: 100px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Cart Section */
+        .cart {
+            width: 35%;
+            padding: 20px;
+            border: 2px solid black;
+            background-color: lightgray;
+        }
+
+        .cart-item {
+            background-color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid black;
+        }
+        .but{
+            padding: 10px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <!-- Product List (Left Side) -->
+        <div class="products">
+            <div class="material">
+                <h1>Item 1</h1>
+                <p>Price =rs.5</p>
+                <button type="button" class="addBut">Add to Cart</button>
+            </div>
+            <div class="material">
+                <h1>Item 2</h1>
+                <p>Price =rs.10</p>
+                <button type="button" class="addBut">Add to Cart</button>
+            </div>
+            <div class="material">
+                <h1>Item 3</h1>
+                <p>Price =rs.15</p>
+                <button type="button" class="addBut">Add to Cart</button>
+            </div>
+            <div class="material">
+                <h1>Item 4</h1>
+                <p>Price =rs.25</p>
+                <button type="button" class="addBut">Add to Cart</button>
+            </div>
+            <div class="material">
+                <h1>Item 5</h1>
+                <p>Price =rs.35</p>
+                <button type="button" class="addBut">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Shopping Cart (Right Side) -->
+        <div class="cart">
+            <h1>Your Cart</h1>
+            <div class="cart-item"></div>
+            <div class="total">Total =rs.0</div>
+        </div>
+    </section>
+
+    <script>
+        // Select all "Add to Cart" buttons
+        const addButtons = document.querySelectorAll(".addBut");
+        const cart = document.querySelector(".cart.cart-items");
+        const totalDisplay = document.querySelecto(".total");
+        let totalPrice = 0;
+        addButtons.forEach(button => {
+            button.addEventListener("click", (e) => {
+                // Get the parent div (the product item)
+                const material = e.target.parentElement;
+                const itemName = material.querySelector("h1").textContent;
+                const itemPrice = parseFloat(material.dataset.price);
+                const cartitem = document.createElement("div");
+                cartitem.classList.add("cart-item");
+                cartitem.innerHTML = `<h2>${itemName}</h2><p>Price: $${itemPrice}</p>`;
+
+                
+                // Clone the item so it stays in the product list
+                const cartItem = material.cloneNode(true);
+
+                // Remove the "Add to Cart" button from the cloned item
+                cartItem.querySelector(".addBut").remove();
+
+                // Add a class for styling
+                cartItem.classList.add("cart-item");
+
+                // Append the cloned item to the cart
+                cart.appendChild(cartItem);
+
+                //creating delete button
+                const deleteBtn = document.createElement("button");
+                deleteBtn.classList.add("but");
+                deleteBtn.innerHTML = "Remove";
+                deleteBtn.addEventListener("click",()=>{
+                    cartItem.remove();
+                    totalPrice -= itemPrice; // Update total price
+                    totalDisplay.textContent = `Total: $${totalPrice}`;
+                });
+                cartItem.appendChild(deleteBtn);
+
+                // Append the cloned item to the cart
+                cart.appendChild(cartItem);
+            });
+        });
+    </script>
+</body>
+</html>

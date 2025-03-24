@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Car</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .road {
+            width: 100%;
+            height: 100px;
+            background-color: gray;
+            position: relative;
+        }
+        .car {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: none;
+        }
+        .top {
+            height: 50px;
+            width: 100px;
+            background-color: darkolivegreen;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .middle {
+            height: 75px;
+            width: 200px;
+            background-color: darkolivegreen;
+            border-top-right-radius: 50px;
+            border-top-left-radius: 30px;
+            position: relative;
+        }
+        .wheel {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: black;
+            position: absolute;
+        }
+        .first { left: 20px; bottom: -20px; }
+        .second { right: 20px; bottom: -20px; }
+        .controls {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="road">
+        <div class="car" id="car">
+            <div class="top"></div>
+            <div class="middle">
+                <div class="wheel first"></div>
+                <div class="wheel second"></div>
+            </div>
+        </div>
+    </div>
+    <div class="controls">
+        <button id="start">Start</button>
+        <button id="stop" disabled>Stop</button>
+    </div>
+    
+    <script>
+        let car = document.getElementById("car");
+let start = document.getElementById("start");
+let stop = document.getElementById("stop");
+let position = 0;
+let animation;
+let isMoving = false;
+
+function moveCar() {
+    isMoving = true;
+    stop.disabled = false;
+    start.innerText = "Start";
+    
+    function animate() {
+        if (position < window.innerWidth - 200) {
+            position += 5;
+            car.style.left = position + "px";
+            animation = requestAnimationFrame(animate);
+        } else {
+            stop.disabled = true;
+            start.innerText = "reStart"; // Change button to "reStart" when at the end
+            isMoving = false; // Allow restart
+        }
+    }
+    
+    animation = requestAnimationFrame(animate);
+}
+
+function stopCar() {
+    isMoving = false;
+    stop.disabled = true;
+    start.innerText = "Resume";
+    cancelAnimationFrame(animation);
+}
+
+function reStart() {
+    position = 0; // Reset position
+    car.style.left = position + "px"; // Move car back to start
+    start.innerText = "Start"; // Reset button text
+    moveCar(); // Start moving again
+}
+
+start.addEventListener("click", () => {
+    if (!isMoving) {
+        if (position >= window.innerWidth - 200) {
+            reStart(); // Restart if car reached the end
+        } else {
+            moveCar(); // Continue moving
+        }
+    }
+});
+
+stop.addEventListener("click", stopCar);
+
+    </script>
+</body>
+</html>

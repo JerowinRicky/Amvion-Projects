@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .abox{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0px;
+        }
+        .buttenNew{
+            padding: 10px;
+            color: red;
+        }
+        .entertext{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="abox">
+            <h1>List</h1><br>
+            <form class="newform">
+                <label for="notes" class="content"></label>
+                <textarea name="newbox" id="boxn" class="entertext" required></textarea>
+                <button type="submit" class="buttenNew">Save</button>
+            </form>
+        </div>
+        <div class="bbox">
+
+        </div>
+    </section>
+</body>
+</html>
+
+<script>
+    document.querySelector(".newform").addEventListener("submit",(e)=>{
+        e.preventDefault();
+        const newbox = document.querySelector("#boxn").value;
+        const bbox = document.querySelector(".bbox");
+        const div = document.createElement("div");
+        const subButton = document.createElement("button");
+        const editBtn = document.createElement("button");
+        editBtn.classList.add("edit");
+        editBtn.innerHTML = "Edit";
+        editBtn.addEventListener("click",()=>{
+            document.querySelector("#boxn").value = div.textContent.replace("DeleteEdit","").trim();
+            div.remove();
+        })
+        div.appendChild(subButton);
+
+        subButton.classList.add("deleteBtn")
+        subButton.innerHTML = "Delete";
+        
+        subButton.addEventListener("click",()=>{
+        div.remove();            
+        });
+        div.textContent = newbox;
+        div.appendChild(editBtn);
+        div.appendChild(subButton);
+        bbox.appendChild(div);
+        document.querySelector(".entertext").value="";
+    });
+</script>

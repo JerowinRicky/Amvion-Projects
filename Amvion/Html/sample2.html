@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: rgb(250, 127, 127);
+        }
+        .container {
+            display: flex;
+            max-width: 1000px;
+            background-color: orange;
+            padding: 20px;
+            border-radius: 15px;
+            margin-inline: auto;
+        }
+        @media (width < 700px) {     /*can use orientation*/
+            .container{
+                flex-direction: column;
+                background-color: #f1c25c;
+            }
+        }
+        .first {
+            flex: 1;
+            padding: 50px;
+            font-size: 30px;
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            justify-content: center;
+            height: 500px;
+        }
+        .button-group {
+            display: flex;
+            gap: 20px; /* Adjust spacing between buttons */
+            margin-top: 20px;
+        }
+        .second {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+           place-items: center;
+            padding: 30px;
+        }
+        .second img{
+            width: 100%;
+        }
+
+        /* First and last image - Oval shape */
+        .second .cam, 
+        .second .tig {
+            width: 100%;
+            aspect-ratio: 150/200;
+            border-radius: 50% / 30%;
+            border: 1px solid rgb(92, 89, 89);
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Second and third image - Circle shape */
+        .second .nat {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border-top-right-radius: 0%;
+            border: 1px solid rgb(92, 89, 89);
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        } 
+        .second .tree {
+            width: 100%;
+           aspect-ratio: 1;
+            border-radius: 50%;
+            border-bottom-left-radius: 0%;
+            border: 1px solid rgb(92, 89, 89);
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Hover effect */
+        .second img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .button-group button {
+            background-color: #ff5733; /* Vibrant orange-red */
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px; /* Rounded corners */
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-group button:hover {
+            background-color: #c70039; /* Darker red on hover */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="first">
+            <h1>Second Try</h1>
+            <p>The code for the sample of a design for developing.</p>
+            <div class="button-group">
+                <button type="submit">Enter</button>
+                <button type="reset">Reset</button>
+            </div>
+        </div>
+        <div class="second">
+            <img src="img/cam.jpeg" alt="Camera" class="cam"> <!-- Oval Shape -->
+            <img src="img/nat.jpeg" alt="Nature" class="nat"> <!-- Circle Shape -->
+            <img src="img/tree.jpeg" alt="Tree" class="tree"> <!-- Circle Shape -->
+            <img src="img/tig.jpeg" alt="Tiger" class="tig"> <!-- Oval Shape -->
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Audit Tool</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .input-section {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .result-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SEO Audit Tool</h1>
+        <div class="input-section">
+            <label for="url">Enter URL:</label>
+            <input type="text" id="url" placeholder="https://example.com">
+            <button id="auditButton">Run Audit</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+    
+    <script>
+        document.getElementById("auditButton").addEventListener("click", function () {
+            const url = document.getElementById("url").value.trim();
+            if (url) {
+                runSEOaudit(url);
+            } else {
+                alert("Please enter a valid URL.");
+            }
+        });
+    
+        function runSEOaudit(url) {
+            const resultsDiv = document.getElementById("result");
+            resultsDiv.innerHTML = `<p>Fetching data from <strong>${url}</strong>...</p>`;
+    
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+    
+            fetch(proxyUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data.contents, "text/html");
+    
+                    const title = doc.querySelector("title")?.innerText || "❌ No title found.";
+                    const metaDescription = doc.querySelector("meta[name='description']")?.content || "❌ No meta description.";
+                    const h1Tag = doc.querySelector("h1")?.innerText || "❌ No H1 tag found.";
+    
+                    const seoResults = {
+                        "Title Tag": title,
+                        "Meta Description": metaDescription,
+                        "H1 Tag": h1Tag 
+                    };
+    
+                    displayResults(seoResults);
+                    // checkPageSpeed(url);
+                })
+                .catch(error => {
+                    resultsDiv.innerHTML = `<p style="color:red;">❌ Error fetching data. Make sure the URL is valid and accessible.</p>`;
+                    console.error("Error fetching SEO data:", error);
+                });
+        }
+    
+        function displayResults(results) {
+            const resultsDiv = document.getElementById("result");
+            resultsDiv.innerHTML += "<h2>SEO Audit Results:</h2>";
+    
+            for (const [key, value] of Object.entries(results)) {
+                const div = document.createElement("div");
+                div.classList.add("result-item");
+                div.innerHTML = `<strong>${key}:</strong> ${value}`;
+                resultsDiv.appendChild(div);
+            }
+        }
+    
+        // async function checkPageSpeed(url) {
+        //     const apiKey = "AIzaSyAfhQ24Z62HjXKnxmuO41fQNUz6hCgk4h8"; // Your API Key (Secure this properly)
+        //     const apiEndpoint = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
+        //     const apiUrl = `${apiEndpoint}?url=${encodeURIComponent(url)}&key=${apiKey}`;
+    
+        //     try {
+        //         const response = await fetch(apiUrl);
+        //         if (!response.ok) {
+        //             throw new Error(`HTTP error! status: ${response.status}`);
+        //         }
+        //         const json = await response.json();
+    
+        //         const cruxMetrics = {
+        //             "First Contentful Paint": json.loadingExperience?.metrics?.FIRST_CONTENTFUL_PAINT_MS?.category || "N/A",
+        //             "First Input Delay": json.loadingExperience?.metrics?.FIRST_INPUT_DELAY_MS?.category || "N/A",
+        //         };
+        //         displayResults(cruxMetrics);
+    
+        //         const lighthouse = json.lighthouseResult;
+        //         const pageSpeedResults = {
+        //             "Performance Score": `${lighthouse.categories.performance.score * 100}/100`,
+        //             "First Contentful Paint": lighthouse.audits['first-contentful-paint']?.displayValue || "N/A",
+        //             "Speed Index": lighthouse.audits['speed-index']?.displayValue || "N/A",
+        //             "Largest Contentful Paint": lighthouse.audits['largest-contentful-paint']?.displayValue || "N/A",
+        //             "Total Blocking Time": lighthouse.audits['total-blocking-time']?.displayValue || "N/A",
+        //             "Time To Interactive": lighthouse.audits['interactive']?.displayValue || "N/A",
+        //             "Estimated Input Latency": lighthouse.audits['estimated-input-latency']?.displayValue || "N/A",
+        //         };
+    
+        //         displayResults(pageSpeedResults);
+        //     } catch (error) {
+        //         console.error("Error fetching PageSpeed Insights data:", error);
+        //         document.getElementById("result").innerHTML += `<p style="color:red;">❌ Error fetching PageSpeed Insights data.</p>`;
+        //     }
+        // }
+    </script>
+    
+    
+</body>
+</html>
+
+
+<!-- <script>
+    document.getElementById("auditButton").addEventListener("click",function(){
+        const url = document.getElementById("url").value;
+        if(url){
+            runSEOmetrics(url);
+        }else{
+            alert("please enter a url.");
+        }
+    });
+    function runSEOmetrics(url){
+        const results = {
+            pageTitle:getPageTitle(url),
+            metaDescription:getMetaDescription(url),
+            isMobileFriendly:checkMobileFriendly(url),
+            pageSpeed:checkPageSpeed(url),
+            backLinks:checkBackLinks(url),
+        };
+        displayResults(results);
+    }
+    function getPageTitle(url){
+        return  "sample page title for" + url;
+    }
+    function getMetaDescription(url){
+        return  "sample meta description for" + url;
+    }
+    function checkMobileFriendly(url){
+        return  "Yes, it's mobile-friendly.";
+    }
+    function checkPageSpeed(url){
+        return  "page speed is good";
+    }
+    function checkBackLinks(url){
+        return  "The site has some backlinks.";
+    }
+    function displayResults(results){
+        const resultSection = document.getElementById("result");
+        resultSection.innerHTML = '';
+        for (const [key,value] of Object.entries(results)){
+            const div = document.createElement('div');
+            div.classList.add("result-item");
+            div.innerHTML = `<strong>${key.replace(/([A-Z])/g,'$1').toUpperCase()}:<strong> ${value}`;
+                resultSection.appendChild(div);
+        }
+    }
+
+</script> -->

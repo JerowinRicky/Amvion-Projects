@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car</title>
+    <style>
+        body{
+            margin: 10px;
+            gap: 0px;
+        }
+        /* .car{
+            display: grid;
+             grid-template-rows: 1fr 1fr 1fr; 
+             grid-template-columns: 1fr; 
+             width: 150px; 
+             justify-content: center; 
+             position: relative; 
+             perspective: 800px; 
+        } */ 
+        .car {
+            position: absolute;
+            width: 200px;
+            height: 60px;
+            background: linear-gradient(1deg,darkred ,  red 60%, red  60%);
+            border-radius: 10px;
+            transform: perspective(500px) rotateY(15deg);
+            /*     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); */
+            clip-path:polygon(0% 10%,15% 50%, 30% 10%, 50% 10%, 65% 40%, 100% 60%, 100% 130%, -130% 130%)
+        }
+        /* .car::before{
+            align-items: end;
+        }
+        .car:hover {
+            transform: rotateY(50deg) rotateX(50deg) translateZ(10px);
+        } */
+
+        .top{
+            height: 50px;
+            width: 100px;
+            background-color: cyan;
+            border: 1px solid black;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            justify-self: center;
+            gap: 0PX;
+        }
+        .middle{
+            height: 75px;
+            width: 200px;
+            background-color:cyan;
+            border: 1px solid black;
+            border-top-right-radius: 50px;
+            border-top-left-radius: 30px;
+        }
+        .first,.second{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background-color: rgb(0, 0, 0);
+        }
+        .first{
+            position: absolute;
+            top: 35px;
+            left: 10px;
+        }
+        .second{
+            position: absolute;
+            top: 35px;
+            right: 30px;
+        }
+        .button{
+            justify-self: center;
+            padding: 10px;
+        }
+        .road{
+            width: auto
+            ;
+            height: 100px;
+            /* background-color: grey; */
+        } 
+        .twobutton{
+            margin-left: 45%;
+            margin-top: 200px;
+        }
+        .third{
+            height: 5px;
+            width: 10px;
+            background-color: black;
+            position: absolute;
+            top: 40px;
+            left: -10px;
+        }
+        .fourth{
+            height: 100px;
+            width:110px;
+            /* background-color: green; */
+            background-image: url(images/fire.png);
+            /* background-size:200%; */
+            background-size: auto 100%;
+            background-position:center top;
+            background-repeat: no-repeat;
+            mix-blend-mode:screen;
+            /* filter: brightness(1) invert(1); */
+            /* background-blend-mode: multiply; */
+            /* -webkit-mask-image: url(images/fire.webp); */
+            /* mask-image: url(images/fire.webp); */
+            position: absolute;
+            top: -15px;
+            right: 100%;
+            transform: rotate(90deg);
+            opacity: 0.8;
+            backdrop-filter: blur(5px);
+            /* clip-path:polygon(0% 10%, 15% 50%, 30% 10%, 50% 10%, 65% 40%, 100% 0%, 100% 100%, -57% 18%,-40% 30%,0% 60%); */
+        }
+        @keyframes fireAnimation {
+    0% {
+        opacity: 0.2;
+        transform: rotate(90deg) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: rotate(90deg) scale(1.1);
+    }
+    100% {
+        opacity: 0.2;
+        transform: rotate(90deg) scale(1);
+    }
+}
+
+.fourth {
+    height: 100px;
+    width: 110px;
+    background-image: url(images/fire.png);
+    background-size: auto 100%;
+    background-position: center top;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -15px;
+    right: 100%;
+    transform: rotate(90deg);
+    opacity: 0.8;
+    animation: fireAnimation 0.5s infinite alternate; /* Blinking fire effect */
+}
+
+    </style>
+</head>
+<body>
+    <section>
+        <div class="road">
+            <div class="car" id="car">
+                <!-- <div class="top"></div>
+                <span class="middle"></span> -->
+                <span class="first"></span>
+                <span class="second"></span>
+                <span class="third"></span>
+                <span class="fourth"></span>
+            </div>
+        </div>
+        <div class="twobutton" >
+            <button type="button" class="button" id="start">start</button>
+            <button type="button" class="button" id="stop">stop</button>
+        </div>
+    </section>
+        <script>
+            let car = document.getElementById("car");
+            let start = document.getElementById("start");
+            let stop = document.getElementById("stop");
+            let position = 0;
+            let animation;
+            let isMoving = false;
+
+                function moveCar(){
+                    isMoving = true;
+                    stop.disabled = false;
+                    start.innerText="start";
+                    function animate() {
+                        console.log("y")
+                        if (position < window.innerWidth - 200) {
+                        animation = requestAnimationFrame(animate);
+                    position += 5;
+                    car.style.left = position + "px";
+                } else {
+                    stop.disabled = true;
+                    start.innerText = "reStart"; // Change button to "reStart" when at the end
+                    isMoving = false; // Allow restart
+                }
+            }
+        
+        animation = requestAnimationFrame(animate);
+    }
+            function stopCar(){
+                isMoving= false;
+                stop.disabled=true;
+                start.innerText="Resume";
+                cancelAnimationFrame(animation);
+            }
+            // start.addEventListener("click",()=>{
+            //     if (!isMoving) moveCar();
+            // });
+            function reStart(){
+                if(position>=window.innerWidth-200){
+                    start.innerText="reStart";
+                    position=0;
+                    car.style.left=position+"px";
+                    moveCar();
+                }else{
+                    moveCar();
+                }
+            }
+            start.addEventListener("click",()=>{
+                if (!isMoving) {
+                    if (position>=window.innerWidth-200){
+                        reStart();
+                    }else{
+                        moveCar();
+                    }
+                }
+            });
+            stop.addEventListener("click",stopCar);
+
+        </script>
+    </body>
+    </html>  

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ (CSS Only)</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .faq-container {
+            width: 50%;
+            text-align: center;
+        }
+
+        details {
+            margin-bottom: 10px;
+            border: 2px solid black;
+            padding: 10px;
+            background: white;
+            cursor: pointer;
+        }
+
+        summary {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        summary::after {
+            content: "⯆"; /* Down arrow */
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            content: "⯅"; /* Up arrow when opened */
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 10px;
+            text-align: left;
+            padding: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        <details>
+            <summary>What is web development?</summary>
+            <p>Web development is the process of building and maintaining websites or web applications. It includes frontend (UI/UX), backend (server-side logic), and databases.</p>
+        </details>
+        <details>
+            <summary>What are frontend and backend development?</summary>
+            <p>Frontend: The part of the website users see (HTML, CSS, JavaScript). Backend: The part that runs on the server (Node.js, PHP, Python, databases).</p>
+        </details>
+        <details>
+            <summary>Most commonly used programming languages in web development?</summary>
+            <p>Frontend: HTML, CSS, JavaScript. Backend: JavaScript (Node.js), Python, PHP, Ruby, Java. Databases: MySQL, PostgreSQL, MongoDB.</p>
+        </details>
+    </div>
+</body>
+</html>

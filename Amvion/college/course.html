@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Course</title>
+</head>
+<body>
+    <section class="headers">
+        <nav>
+            <a href="index.html"><img src="image/logo.png" alt="Logo"></a>
+            <div class="nav-links" id="nav-links">
+                <!-- <button id="menu-btn" class="menu-btn" onclick="openMenu()">☰</button> -->
+                <ul>
+                    <!-- <button class="close-btn" onclick="closeMenu()">✖</button> -->
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="course.html">COURSE</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="toggle-btn"></div>
+        </nav>
+        <div class="text-box">
+            <h1>Our Course</h1>
+        </div>
+    </section>
+    <section class="course">
+        <h1>Course We Offer</h1>
+        <p>These are the courses we offer for you.</p>
+        <div class="row">
+            <div class="course-colmn">
+                <h3>Intermediate</h3>
+                <p>The College was established by EASA Foundations, Coimbatore, a public charitable and educational trust, under the Chairmanship of its Managing Trustee, Thiru.T.D.Eswaramoorthy.</p>
+            </div><div class="course-colmn">
+                <h3>Degree</h3>
+                <p>The College was established by EASA Foundations, Coimbatore, a public charitable and educational trust, under the Chairmanship of its Managing Trustee, Thiru.T.D.Eswaramoorthy.</p>
+            </div><div class="course-colmn">
+                <h3>Post Graduate</h3>
+                <p>The College was established by EASA Foundations, Coimbatore, a public charitable and educational trust, under the Chairmanship of its Managing Trustee, Thiru.T.D.Eswaramoorthy.</p>
+            </div>
+        </div>
+   </section>
+   <section class="facilities">
+    <h1>Our Facilities</h1>
+    <p>The destination of your search in the education.Learn,Practice and Make Possible.</p>
+    <div class="row">
+        <div class="facilities-colmn">
+            <img src="image/library.png" alt="Library">
+            <h3>World Class Library</h3>
+            <p>The destination of your search in the education.Learn,Practice and Make Possible.</p>  
+        </div>
+        <div class="facilities-colmn">
+            <img src="image/basketball.png" alt="Library">
+            <h3>Largest Playground</h3>
+            <p>The destination of your search in the education.Learn,Practice and Make Possible.</p>  
+        </div><div class="facilities-colmn">
+            <img src="image/cafeteria.png" alt="Library">
+            <h3>Cafeteria</h3>
+            <p>The destination of your search in the education.Learn,Practice and Make Possible.</p>  
+        </div>
+    </div>
+</section>
+</body>
+</html>
+
+
+<script>
+    const toggleBtn = document.querySelector(".toggle-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+        toggleBtn.classList.toggle("close");
+    });
+    
+</script>

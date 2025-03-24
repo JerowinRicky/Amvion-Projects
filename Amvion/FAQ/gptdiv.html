@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ (Smooth CSS Only)</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .faq-container {
+            width: 50%;
+            text-align: center;
+        }
+
+        .faq-item {
+            border: 2px solid black;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .faq-item h2 {
+            margin: 0;
+            padding: 15px;
+            cursor: pointer;
+            background: #ddd;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        .faq-item h2:hover {
+            background: #bbb;
+        }
+
+        .faq-item h2::after {
+            content: "⯆"; /* Down arrow */
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+            padding: 0 10px;
+        }
+
+        /* Hide radioes */
+        .faq-toggle {
+            display: none;
+        }
+
+        /* When radio is checked, expand the answer */
+        .faq-toggle:checked + .faq-item .faq-content {
+            max-height: 200px;
+            opacity: 1;
+            padding: 10px;
+        }
+
+        /* Rotate arrow when active */
+        .faq-toggle:checked + .faq-item h2::after {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        
+        <input type="radio"name="faq" id="q1" class="faq-toggle">
+        <div class="faq-item">
+            <label for="q1">
+                <h2>What is web development?</h2>
+            </label>
+            <div class="faq-content">
+                <p>Web development is the process of building and maintaining websites or web applications. It includes frontend (UI/UX), backend (server-side logic), and databases.</p>
+            </div>
+        </div>
+
+        <input type="radio" name="faq"  id="q2" class="faq-toggle">
+        <div class="faq-item">
+            <label for="q2">
+                <h2>What are frontend and backend development?</h2>
+            </label>
+            <div class="faq-content">
+                <p>Frontend: The part of the website users see (HTML, CSS, JavaScript). Backend: The part that runs on the server (Node.js, PHP, Python, databases).</p>
+            </div>
+        </div>
+
+        <input type="radio" name="faq"  id="q3" class="faq-toggle">
+        <div class="faq-item">
+            <label for="q3">
+                <h2>Most commonly used programming languages in web development?</h2>
+            </label>
+            <div class="faq-content">
+                <p>Frontend: HTML, CSS, JavaScript. Backend: JavaScript (Node.js), Python, PHP, Ruby, Java. Databases: MySQL, PostgreSQL, MongoDB.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
